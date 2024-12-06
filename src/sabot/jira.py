@@ -4,7 +4,6 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 
-
 def pull_into_crap(summary, description):
     jira_url = os.getenv("jira_url")
     jira_user = os.getenv("jira_user")
@@ -60,6 +59,6 @@ def pull_into_crap(summary, description):
         auth=HTTPBasicAuth(jira_user, jira_api_token)
     )
     if response.status_code == 201:
-        return f"{jira_url}/browse/{response.json()["key"]}"
+        return f"{jira_url}/browse/{response.json()['key']}"
     else:
         return f"упс:\n{response.status_code}\n{response.text}"
